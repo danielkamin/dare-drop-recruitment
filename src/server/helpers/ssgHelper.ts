@@ -6,6 +6,6 @@ import superjson from "superjson";
 export const generateSSGHelper = () =>
   createServerSideHelpers({
     router: appRouter,
-    ctx: { prisma },
+    ctx: { session: null, prisma },
     transformer: superjson, // optional - adds superjson serialization
   });

@@ -8,7 +8,10 @@
  */
 import { initTRPC } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+import { type NodeHTTPCreateContextFnOptions } from "@trpc/server/adapters/node-http";
+import { type IncomingMessage } from "http";
 import superjson from "superjson";
+import type ws from "ws";
 import { ZodError } from "zod";
 import { prisma } from "~/server/db";
 
@@ -32,8 +35,14 @@ type CreateContextOptions = Record<string, never>;
  *
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
-const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+export const createInnerTRPCContext = (
+  _opts:
+    | CreateContextOptions
+    | NodeHTTPCreateContextFnOptions<IncomingMessage, ws>
+) => {
+  const session = null;
   return {
+    session,
     prisma,
   };
 };

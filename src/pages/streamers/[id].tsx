@@ -30,7 +30,6 @@ const Streamer: NextPage<{ id: string }> = ({ id }) => {
             className="rounded-full"
           />
         </div>
-
         <div className="flex w-96 flex-col gap-4">
           <h1 className="text-4xl font-bold">{data.name}</h1>
           <h2 className="text-2xl font-semibold">{data.streamingPlatform}</h2>

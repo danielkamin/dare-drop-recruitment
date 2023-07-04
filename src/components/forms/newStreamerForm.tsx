@@ -36,7 +36,7 @@ export const NewStreamerForm = ({ onSubmit }: IStreamerForm) => {
             {...register("streamingPlatform")}
             defaultValue={"Twitch"}
           >
-            {streamingPlatforms.map((platform, index) => (
+            {streamingPlatforms.map((platform) => (
               <option key={platform}>{platform}</option>
             ))}
           </select>

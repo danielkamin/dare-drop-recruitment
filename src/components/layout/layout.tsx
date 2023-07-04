@@ -1,6 +1,7 @@
 import Head from "next/head";
+import { type ReactNode } from "react";
 
-const Layout = ({ children }: { children: any }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Head>

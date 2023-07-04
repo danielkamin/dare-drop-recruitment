@@ -3,33 +3,9 @@ import { TRPCError } from "@trpc/server";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { streamerSchema } from "~/server/validation/streamer";
 import { observable } from "@trpc/server/observable";
-import { EventEmitter } from "events";
 import { type Streamer } from "@prisma/client";
+import { StreamersEventEmitter } from "~/utils/eventEmitters";
 
-interface StreamerEvents {
-  create: (data: Streamer) => void;
-  upvote: (data: Streamer) => void;
-  downvote: (data: Streamer) => void;
-}
-declare interface StreamersEventEmitter {
-  on<TEv extends keyof StreamerEvents>(
-    event: TEv,
-    listener: StreamerEvents[TEv]
-  ): this;
-  off<TEv extends keyof StreamerEvents>(
-    event: TEv,
-    listener: StreamerEvents[TEv]
-  ): this;
-  once<TEv extends keyof StreamerEvents>(
-    event: TEv,
-    listener: StreamerEvents[TEv]
-  ): this;
-  emit<TEv extends keyof StreamerEvents>(
-    event: TEv,
-    ...args: Parameters<StreamerEvents[TEv]>
-  ): boolean;
-}
-class StreamersEventEmitter extends EventEmitter {}
 const ee = new StreamersEventEmitter();
 
 export const streamersRouter = createTRPCRouter({
