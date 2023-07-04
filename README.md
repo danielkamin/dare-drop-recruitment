@@ -13,9 +13,27 @@ Websocket only has development server setup so I encourage to use command
 for testing that application.
 One thing that could be optimized is refething data on WebSocket events because I implemented for the list of streamers to be refetched but ideally it should only refetch data of one single record or update state of that data on the client side (browser).
 
+.env file shouldn't be added into source control but for the sake of simplicity and ease of application testing it was added
+
 System info:
 
 ```
 Node: 16.14.2 - ~/.nvm/versions/node/v16.14.2/bin/node
 pnpm: 7.1.7 - ~/.nvm/versions/node/v16.14.2/bin/pnpm
+```
+### Project setup:
+
+```
+pnpm install
+pnpm prisma db push
+```
+### Start the application
+To start the application you need two terminal instances to run next dev server and websocket dev server.
+In one terminal you need to run:
+```
+pnpm run dev:wss
+``` 
+and in the other:
+```
+pnpm run dev
 ```
