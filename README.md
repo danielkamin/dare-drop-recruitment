@@ -9,7 +9,7 @@ For this assignemt I decided to use Next.js with usage of create-t3-app starter 
 I decided to use Trpc with Next.js instead of creating 2 seperate applications because when writing TypeScript code on back-end and front-end of an apllication gives me very good DX and speeds up process of development because still this is and MVP application.
 
 Websocket only has development server setup so I encourage to use command
-`pnpm run dev`
+`pnpm run dev` for starting an application and `pnpm run dev:wss` for starting WebSocket server
 for testing that application.
 One thing that could be optimized is refething data on WebSocket events because I implemented for the list of streamers to be refetched but ideally it should only refetch data of one single record or update state of that data on the client side (browser).
 
